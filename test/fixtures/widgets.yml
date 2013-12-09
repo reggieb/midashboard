@@ -1,0 +1,7 @@
+one:
+  name: one
+  root_uri: 'http://localhost:3001/things.json'
+  data_type: array
+  container: 
+  title: My widget
+  description: This is my widget

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @widget.name %>
+</p>
+
+<p>
+  <b>Root uri:</b>
+  <%= @widget.root_uri %>
+</p>
+
+<p>
+  <b>Data type:</b>
+  <%= @widget.data_type %>
+</p>
+
+<p>
+  <b>Container:</b>
+  <%= @widget.container %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @widget.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @widget.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_widget_path(@widget) %> |
+<%= link_to 'Back', widgets_path %>
