@@ -17,3 +17,8 @@ end
 
 gem 'jquery-rails'
 
+group :test do
+  gem 'webmock'
+end
+
+gem 'nesty' # allows original exception data to bubble up through handled exceptions
