@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131209104454) do
+ActiveRecord::Schema.define(:version => 20131209131457) do
+
+  create_table "dashboard_widgets", :force => true do |t|
+    t.integer  "dashboard_id"
+    t.integer  "widget_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "dashboards", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "widgets", :force => true do |t|
     t.string   "name"

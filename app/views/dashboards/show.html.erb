@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @dashboard.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @dashboard.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @dashboard.description %>
+</p>
+
+<p>
+  <b>Widgets:</b>
+  <%= @dashboard.widgets.collect(&:name).join(', ') %>
+</p>
+
+<%= link_to 'Edit', edit_dashboard_path(@dashboard) %> |
+<%= link_to 'Back', dashboards_path %>
