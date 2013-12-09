@@ -24,10 +24,19 @@
     <%= f.text_area :description %>
   </div>
 
+  <ul>
   <% @widgets.each do |widget| %>
-    <%= check_box_tag "dashboard[widget_ids][]",  widget.id, @dashboard.widgets.include?(widget) %>
-    <%= widget.name %>
+    <li>
+      <%= check_box_tag(
+            "dashboard[widget_ids][]",
+            widget.id,
+            @dashboard.widgets.include?(widget),
+            id: "dashboard_widget_ids_#{widget.id}"
+          ) %>
+      <%= label_tag "dashboard_widget_ids_#{widget.id}", widget.name %>
+    </li>
   <% end %>
+  </ul>
 
   <div class="actions">
     <%= f.submit %>
