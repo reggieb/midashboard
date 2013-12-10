@@ -30,8 +30,8 @@ class DashboardsController < ApplicationController
 
 
   def update
+    ensure_widget_ids_in_params
     if @dashboard.update_attributes(params[:dashboard])
-      remove_unselected_widgets
       redirect_to @dashboard, notice: 'Dashboard was successfully updated.' 
     else
       render action: "edit"
@@ -53,11 +53,9 @@ class DashboardsController < ApplicationController
     @widgets = Widget.all
   end
 
-  def remove_unselected_widgets
-    @dashboard.widgets.each{|w| @dashboard.widgets.destroy(w) unless widget_ids_params_include?(w.id)}
+  def ensure_widget_ids_in_params
+    params[:dashboard][:widget_ids] = [] unless params[:dashboard][:widget_ids]
   end
 
-  def widget_ids_params_include?(id)
-    params[:dashboard][:widget_ids] and params[:dashboard][:widget_ids].include?(id.to_s)
-  end
+
 end

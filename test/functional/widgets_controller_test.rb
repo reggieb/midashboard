@@ -18,7 +18,15 @@ class WidgetsControllerTest < ActionController::TestCase
 
   def test_create
     assert_difference('Widget.count') do
-      post :create, widget: { container: @widget.container, data_type: @widget.data_type, description: @widget.description, name: @widget.name, root_uri: @widget.root_uri, title: @widget.title }
+      post :create, widget: {
+        data_type: @widget.data_type,
+        description: @widget.description,
+        name: @widget.name,
+        root_uri: @widget.root_uri,
+        title: @widget.title,
+        x_field: @widget.x_field,
+        y_field: @widget.y_field
+      }
     end
 
     assert_redirected_to widget_path(assigns(:widget))
@@ -42,8 +50,12 @@ class WidgetsControllerTest < ActionController::TestCase
   end
 
   def test_update
-    put :update, id: @widget, widget: { container: @widget.container, data_type: @widget.data_type, description: @widget.description, name: @widget.name, root_uri: @widget.root_uri, title: @widget.title }
+    text = 'New Title'
+    put :update, id: @widget, widget: {
+      title: text
+    }
     assert_redirected_to widget_path(assigns(:widget))
+    assert_equal text, assigns(:widget).title
   end
 
   def test_destroy

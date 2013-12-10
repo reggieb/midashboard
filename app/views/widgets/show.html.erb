@@ -1,34 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<% %w{name title root_uri data_type y_field y_label x_field x_label before_parameter after_parameter date_modifier description}.each do |field| %>
 <p>
-  <b>Name:</b>
-  <%= @widget.name %>
+  <b><%= field %>:</b>
+  <%= @widget.send field %>
+  <span class="full"><%#= t("helpers.label.widget.#{field}") %></span>
 </p>
+<% end %>
 
-<p>
-  <b>Root uri:</b>
-  <%= @widget.root_uri %>
-</p>
-
-<p>
-  <b>Data type:</b>
-  <%= @widget.data_type %>
-</p>
-
-<p>
-  <b>Container:</b>
-  <%= @widget.container %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @widget.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @widget.description %>
-</p>
 
 
 <%= link_to 'Edit', edit_widget_path(@widget) %> |

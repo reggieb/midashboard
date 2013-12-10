@@ -1,7 +1,11 @@
 one:
   name: one
   root_uri: 'http://localhost:3001/things.json'
-  data_type: array
-  container: 
+  data_type: grid
   title: My widget
   description: This is my widget
+  x_field: happened_at
+  y_field: score
+  before_parameter: before
+  after_parameter: after
+  date_modifier: '%d-%b-%Y'

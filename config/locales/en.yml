@@ -2,4 +2,18 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  helpers:
+    label:
+      widget:
+        name: Name (identifies widget within dashbaord)
+        title: Title (displayed label for widget)
+        root_uri: Root uri (root to data source api)
+        data_type: Data type
+        y_field: Y field (field in data used to populate y axis)
+        y_label: Y label (label for Y axis)
+        x_field: X field (field in data used to populate x axis)
+        x_label: X label (label for X axis)
+        before_parameter: Before parameter (api parameter to limit before date)
+        after_parameter: After parameter (api parameter to limit after date)
+        date_modifier: Date modifier (strftime parameters used to modify time object for api call)
+        description: Description (describes widget to users)
