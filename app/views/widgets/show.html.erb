@@ -7,7 +7,8 @@
 </p>
 <% end %>
 
-
-
 <%= link_to 'Edit', edit_widget_path(@widget) %> |
 <%= link_to 'Back', widgets_path %>
+
+
+<img src="<%= LineGraph.new(@widget).url %>"/>

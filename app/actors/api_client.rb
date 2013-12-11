@@ -11,7 +11,7 @@ class ApiClient
   end
 
   def json
-    @json ||= JSON.parse response.body
+    @json ||= MultiJson.load response.body
   end
 
   private

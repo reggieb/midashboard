@@ -22,3 +22,5 @@ group :test do
 end
 
 gem 'nesty' # allows original exception data to bubble up through handled exceptions
+
+gem 'gchartrb' # Google charts ruby wrapper

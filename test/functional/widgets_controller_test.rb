@@ -41,7 +41,7 @@ class WidgetsControllerTest < ActionController::TestCase
     enable_mock @widget.root_uri, things.to_json
     get :show, id: @widget, format: 'json'
     assert_response :success
-    assert_equal stringify_keys(things), JSON.parse(response.body)
+    assert_equal @widget.data, response.body
   end
 
   def test_edit
