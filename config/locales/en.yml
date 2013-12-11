@@ -10,8 +10,12 @@ en:
         root_uri: Root uri (root to data source api)
         data_type: Data type
         y_field: Y field (field in data used to populate y axis)
+        y_times: Y times? (Y data comprises dates or times)
+        y_points: Y points (number of label points on Y axis)
         y_label: Y label (label for Y axis)
         x_field: X field (field in data used to populate x axis)
+        x_times: X times? (X data comprises dates or times)
+        x_points: X points (number of label points on X axis)
         x_label: X label (label for X axis)
         before_parameter: Before parameter (api parameter to limit before date)
         after_parameter: After parameter (api parameter to limit after date)

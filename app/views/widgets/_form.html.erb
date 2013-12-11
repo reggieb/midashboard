@@ -11,10 +11,27 @@
     </div>
   <% end %>
 
-  <% %w{name title root_uri data_type y_field y_label x_field x_label before_parameter after_parameter date_modifier}.each do |field| %>
+  <% {
+    name: :text,
+    title: :text,
+    root_uri: :text, 
+    data_type: :text,
+    chart_type: :text,
+    y_field: :text,
+    y_times: :boolean,
+    y_points: :text,
+    y_label: :text, 
+    x_field: :text,
+    x_times: :boolean,
+    x_points: :text,
+    x_label: :text,
+    before_parameter: :text,
+    after_parameter: :text,
+    date_modifier: :text
+  }.each do |field, input_type| %>
   <div class="field">
     <%= f.label field %><br />
-    <%= f.text_field field %>
+    <%= (input_type == :text) ? f.text_field(field) : f.check_box(field) %>
   </div>
   <% end %>
   <div class="field">

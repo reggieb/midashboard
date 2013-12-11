@@ -1,14 +1,9 @@
-<p id="notice"><%= notice %></p>
-<% %w{name title root_uri data_type y_field y_label x_field x_label before_parameter after_parameter date_modifier description}.each do |field| %>
-<p>
-  <b><%= field %>:</b>
-  <%= @widget.send field %>
-  <span class="full"><%#= t("helpers.label.widget.#{field}") %></span>
-</p>
-<% end %>
+<h1><%= @widget.title %></h2>
+
+<%= widget_chart(@widget) %>
 
 <%= link_to 'Edit', edit_widget_path(@widget) %> |
 <%= link_to 'Back', widgets_path %>
 
 
-<img src="<%= LineGraph.new(@widget).url %>"/>
+
