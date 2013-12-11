@@ -3,25 +3,57 @@ require 'test_helper'
 class DataSeriesTest < ActiveSupport::TestCase
 
   def setup
-    @widget = widgets(:one)
-    enable_mock @widget.root_uri, things.to_json
-    @data_series = DataSeries.new(@widget.data_grid)
+    @data = [2, 3, 5, 19.5]
+    @data_series = DataSeries.new(@data)
   end
 
-  def test_x_max
-    assert_equal @widget.data_x.max, @data_series.x_max
+  def test_max
+    assert_equal @data.max, @data_series.max
   end
 
-  def test_y_max
-    assert_equal @widget.data_y.max, @data_series.y_max
+  def test_min
+    assert_equal @data.min, @data_series.min
   end
-
-  def test_x_min
-    assert_equal @widget.data_x.min, @data_series.x_min
+  
+  def test_percentage_factor
+    expected = 100.0 / @data.max.ceil
+    assert_equal expected, @data_series.percentage_factor
   end
-
-  def test_y_min
-    assert_equal @widget.data_y.min, @data_series.y_min
+  
+  def test_percentages
+    factor = 100.0 / @data.max.ceil
+    expected = @data.collect{|d| d * factor}
+    assert_equal expected, @data_series.percentages
   end
+  
+  def test_labels
+    expected = [0, 4, 8, 12, 16, 20]
+    assert_equal expected, @data_series.labels
+  end
+  
+  def test_labels_with_number
+    expected = [0, 5, 10, 15, 20]
+    assert_equal expected, @data_series.labels(expected.length)
+  end
+  
+  def test_labels_with_proc
+    expected = ['0', '4', '8', '12', '16', '20']
+    assert_equal expected, @data_series.labels{|l| l.to_i.to_s}
+  end
+  
+  def test_tight_percentages
+    @data_series = DataSeries.new(@data, tight: true)
+    offset = @data.min.floor
+    factor = 100.0 / (@data.max.ceil - offset)   
+    expected = @data.collect{|d| (d - offset) * factor }
+    assert_equal expected, @data_series.percentages 
+  end
+  
+  def test_tight_labels
+    @data_series = DataSeries.new([10, 15, 20], tight: true)
+    expected = [10, 12, 14, 16, 18, 20]
+    assert_equal expected, @data_series.labels
+  end
+ 
 
 end

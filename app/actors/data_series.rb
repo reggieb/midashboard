@@ -1,31 +1,47 @@
 
 class DataSeries
-  attr_reader :data
-  def initialize(data)
+  attr_reader :data, :tight
+  
+  def initialize(data, args = {})
     @data = data
+    @tight = args[:tight]
   end
 
-  def x_max
-    @x_max ||= x_data.max
+  def max
+    @max ||= data.max
   end
 
-  def y_max
-    @y_max ||= y_data.max
+  def min
+    @min ||= data.min
+  end
+  
+  def ceiling
+    @ceiling ||= max.ceil
+  end
+  
+  def floor
+    @floor ||= tight ? min.floor : 0
+  end
+  
+  def size
+    @size ||= ceiling - floor
+  end
+  
+  def percentage_factor
+    @percentage_factor ||= 100.0 / (size)
+  end
+  
+  def percentages
+    @percentage ||= data.collect{|d| (d - floor) * percentage_factor}
+  end
+  
+  def labels(number = 6, &modifier)
+    mod = number - 1
+    (0..mod).to_a.collect do |point| 
+      label = (point * ((size)/mod.to_f)) + floor
+      label = modifier.call label if modifier
+      label
+    end
   end
 
-  def x_min
-    @x_min ||= x_data.min
-  end
-
-  def y_min
-    @y_min ||= y_data.min
-  end
-
-  def x_data
-    @x_data ||= data.collect &:first
-  end
-
-  def y_data
-    @y_data ||= data.collect &:last
-  end
 end
