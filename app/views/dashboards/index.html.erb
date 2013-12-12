@@ -1,6 +1,6 @@
 <h1>Dashboards</h1>
-<p><%= link_to 'New Dashboard', new_dashboard_path %></p>
-<table>
+<p><%= link_to 'New Dashboard', new_dashboard_path, class: 'btn btn-primary' %></p>
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Title</th>
@@ -15,9 +15,9 @@
     <td><%= dashboard.name %></td>
     <td><%= dashboard.title %></td>
     <td><%= dashboard.description %></td>
-    <td><%= link_to 'Show', dashboard %></td>
-    <td><%= link_to 'Edit', edit_dashboard_path(dashboard) %></td>
-    <td><%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', dashboard, class: 'btn btn-info' %></td>
+    <td><%= link_to 'Edit', edit_dashboard_path(dashboard), class: 'btn btn-warning' %></td>
+    <td><%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>

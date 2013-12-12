@@ -26,3 +26,5 @@ gem 'nesty' # allows original exception data to bubble up through handled except
 gem "google_visualr", ">= 2.1" # Google charts ruby wrapper
 
 gem 'simple_form' # Simplifies form input syntax
+
+gem 'remote_partial' # Grabs styling includes

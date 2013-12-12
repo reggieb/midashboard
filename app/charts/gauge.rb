@@ -37,17 +37,3 @@ class Gauge
   end
   
 end
-# data_table = GoogleVisualr::DataTable.new
-#  data_table.new_column('string'  , 'Label')
-#  data_table.new_column('number'  , 'Value')
-#  data_table.add_rows(3)
-#  data_table.set_cell(0, 0, 'Memory' )
-#  data_table.set_cell(0, 1, 80)
-#  data_table.set_cell(1, 0, 'CPU'    )
-#  data_table.set_cell(1, 1, 55)
-#  data_table.set_cell(2, 0, 'Network')
-#  data_table.set_cell(2, 1, 68)
-# 
-#  opts   = { :width => 400, :height => 120, :redFrom => 90, :redTo => 100, :yellowFrom => 75, :yellowTo => 90, :minorTicks => 5 }
-#  @chart = GoogleVisualr::Interactive::Gauge.new(data_table, opts)
- 

@@ -13,11 +13,11 @@
 
   <%= f.input :name %>
   <%= f.input :title %>
-  <%= f.input :description %>
+  <%= f.input :description, input_html: { rows: 3 } %>
 
   <%= f.association :widgets, as: :check_boxes %>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
   </div>
 <% end %>
