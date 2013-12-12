@@ -1,20 +1,22 @@
 class BaseTable
-  attr_reader :widget
   
   def self.chart_types
     {
       table: self,
       scatter: ScatterGraph,
-      line: LineGraph
+      line: LineGraph,
+      guage: Gauge
     }
   end
+  
+  attr_reader :widget
 
   def initialize(widget)
     @widget = widget
   end
   
   def chart     
-    @chart||= GoogleVisualr::Interactive::Table.new(data_table, options)  
+    @chart ||= GoogleVisualr::Interactive::Table.new(data_table, options)  
   end
   
   def data_table   
