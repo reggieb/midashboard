@@ -38,7 +38,7 @@ class DataSeries
   def labels(number = 6, &modifier)
     mod = number - 1
     (0..mod).to_a.collect do |point| 
-      label = (point * ((size)/mod.to_f)) + floor
+      label = BigDecimal.new(((point * Rational(size, mod)) + floor), 12) # Uses BigDecimal and Rational to avoid float issues
       label = modifier.call label if modifier
       label
     end

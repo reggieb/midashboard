@@ -41,6 +41,12 @@ class DataSeriesTest < ActiveSupport::TestCase
     assert_equal expected, @data_series.labels{|l| l.to_i.to_s}
   end
   
+  def test_labels_with_float_issue
+    data_series = DataSeries.new([1])
+    expected = %w{0.0 0.2 0.4 0.6 0.8 1.0}
+    assert_equal expected, data_series.labels{|l| l.to_s}
+  end
+  
   def test_tight_percentages
     @data_series = DataSeries.new(@data, tight: true)
     offset = @data.min.floor
