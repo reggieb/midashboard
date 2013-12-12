@@ -66,7 +66,7 @@ class Widget < ActiveRecord::Base
   end
   
   def data
-    [x_series.percentages, y_series.percentages].transpose
+    [x_data, y_data].transpose
   end
 
   private

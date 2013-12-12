@@ -23,4 +23,4 @@ end
 
 gem 'nesty' # allows original exception data to bubble up through handled exceptions
 
-gem 'gchartrb' # Google charts ruby wrapper
+gem "google_visualr", ">= 2.1" # Google charts ruby wrapper

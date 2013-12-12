@@ -1,36 +1,8 @@
 
-require 'google_chart'
-class LineGraph
-  attr_reader :widget
-
-  def initialize(widget)
-    @widget = widget
-  end
+class LineGraph < BaseTable
   
-  def url
+  def chart     
+    @chart||= GoogleVisualr::Interactive::LineChart.new(data_table, options)  
+  end
 
-    GoogleChart::LineChart.new('600x200', widget.title, true) do |lc|
-      
-        lc.data widget.y_label, widget.data, '0000ff'
-        lc.show_legend = true
-        lc.axis(
-          :y, 
-          labels: widget.y_series.labels{|l| format_label l}
-        )
-        lc.axis(
-          :x, 
-          labels: widget.x_series.labels{|l| format_label l}
-        )
-
-      return lc.to_url
-    end
-  end
-  
-  def format_label(label)
-    label.kind_of?(Time) ? label.strftime(date_mod) : label
-  end
-  
-  def date_mod
-    widget.date_modifier? ? widget.date_modifier : "%d-%b-%Y"
-  end
 end
