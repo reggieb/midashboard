@@ -1,5 +1,13 @@
 class BaseTable
   attr_reader :widget
+  
+  def self.chart_types
+    {
+      table: self.class,
+      scatter: ScatterGraph,
+      line: LineGraph
+    }
+  end
 
   def initialize(widget)
     @widget = widget

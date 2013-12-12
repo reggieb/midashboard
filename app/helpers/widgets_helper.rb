@@ -8,14 +8,7 @@ module WidgetsHelper
   end
   
   def chart_instance(widget)
-    klass = case widget.chart_type
-    when 'line'
-      LineGraph
-    when 'scatter'
-      ScatterGraph
-    else
-      BaseTable
-    end
+    klass = BaseTable.chart_types[widget.chart_type.to_sym] || BaseTable
     klass.new(widget)
   end
   
