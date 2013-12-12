@@ -3,7 +3,7 @@ class BaseTable
   
   def self.chart_types
     {
-      table: self.class,
+      table: self,
       scatter: ScatterGraph,
       line: LineGraph
     }

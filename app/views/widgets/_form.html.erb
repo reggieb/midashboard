@@ -1,8 +1,7 @@
-<%= form_for(@widget) do |f| %>
+<%= simple_form_for(@widget) do |f| %>
   <% if @widget.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
-
       <ul>
       <% @widget.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,34 +10,25 @@
     </div>
   <% end %>
 
-  <% {
-    name: :text,
-    title: :text,
-    root_uri: :text, 
-    data_type: :text,
-    chart_type: :text,
-    y_field: :text,
-    y_times: :boolean,
-    y_points: :text,
-    y_label: :text, 
-    x_field: :text,
-    x_times: :boolean,
-    x_points: :text,
-    x_label: :text,
-    before_parameter: :text,
-    after_parameter: :text,
-    date_modifier: :text
-  }.each do |field, input_type| %>
-  <div class="field">
-    <%= f.label field %><br />
-    <%= (input_type == :text) ? f.text_field(field) : f.check_box(field) %>
-  </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
+    <%= f.input :name %>
+    <%= f.input :title %>
+    <%= f.input :root_uri %>
+    <%= f.input :data_type %>
+    <%= f.input :chart_type, collection: BaseTable.chart_types.keys, prompt: 'Please select' %>
+    <%= f.input :y_field %>
+    <%= f.input :y_times %>
+    <%= f.input :y_points %>
+    <%= f.input :y_label %>
+    <%= f.input :x_field %>
+    <%= f.input :x_times %>
+    <%= f.input :x_points %>
+    <%= f.input :x_label %>
+    <%= f.input :before_parameter %>
+    <%= f.input :after_parameter %>
+    <%= f.input :date_modifier %>
+    <%= f.input :description %>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_for(@dashboard) do |f| %>
+<%= simple_form_for(@dashboard) do |f| %>
   <% if @dashboard.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@dashboard.errors.count, "error") %> prohibited this dashboard from being saved:</h2>
@@ -11,34 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
+  <%= f.input :name %>
+  <%= f.input :title %>
+  <%= f.input :description %>
 
-  <ul>
-  <% @widgets.each do |widget| %>
-    <li>
-      <%= check_box_tag(
-            "dashboard[widget_ids][]",
-            widget.id,
-            @dashboard.widgets.include?(widget),
-            id: "dashboard_widget_ids_#{widget.id}"
-          ) %>
-      <%= label_tag "dashboard_widget_ids_#{widget.id}", widget.name %>
-    </li>
-  <% end %>
-  </ul>
+  <%= f.association :widgets, as: :check_boxes %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>

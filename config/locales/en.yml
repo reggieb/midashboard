@@ -2,8 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  helpers:
-    label:
+  simple_form:
+    labels:
       widget:
         name: Name (identifies widget within dashbaord)
         title: Title (displayed label for widget)

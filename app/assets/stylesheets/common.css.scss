@@ -67,3 +67,26 @@ div {
     list-style: square;
   }
 }
+
+label {
+  display: block;
+}
+
+input[type="checkbox"] + label {
+  display: inline;
+  margin-left: 0.5em;
+}
+
+.check_boxes .checkbox {
+  display: block;
+}
+
+div.input {
+  margin: 1em 0 0.5em 0;
+}
+
+textarea {
+  width: 300px;
+  height: 8em;
+}
+
