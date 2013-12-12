@@ -21,13 +21,17 @@ class ScatterGraph
           :x, 
           labels: widget.x_series.labels{|l| format_label l}
         )
-
+        lc.point_sizes [5] # doesn't seem to have an effect unless set of zero (when points disappear)
       return lc.to_url
     end
   end
   
   def format_label(label)
-    label.kind_of?(Time) ? label.strftime("%d-%b-%Y") : label
+    label.kind_of?(Time) ? label.strftime(date_mod) : label
+  end
+  
+  def date_mod
+    widget.date_modifier? ? widget.date_modifier : "%d-%b-%Y"
   end
 
 end

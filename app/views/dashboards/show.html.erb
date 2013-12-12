@@ -1,24 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @dashboard.title %></h2>
 
-<p>
-  <b>Name:</b>
-  <%= @dashboard.name %>
-</p>
 
-<p>
-  <b>Title:</b>
-  <%= @dashboard.title %>
-</p>
-
-<p>
-  <b>Description:</b>
+<div>
   <%= @dashboard.description %>
-</p>
+</div>
 
-<p>
-  <b>Widgets:</b>
-  <%= @dashboard.widgets.collect(&:name).join(', ') %>
-</p>
+<div class="widgets">
+  <h2>Widgets:</h2>
+  <% @dashboard.widgets.each do |widget| %>
+    <div class="widget">
+      <%= link_to widget_chart(widget), widget_path(widget) %>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_dashboard_path(@dashboard) %> |
 <%= link_to 'Back', dashboards_path %>

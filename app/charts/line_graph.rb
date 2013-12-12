@@ -27,7 +27,10 @@ class LineGraph
   end
   
   def format_label(label)
-    label.kind_of?(Time) ? label.strftime("%d-%b-%Y") : label
+    label.kind_of?(Time) ? label.strftime(date_mod) : label
   end
-
+  
+  def date_mod
+    widget.date_modifier? ? widget.date_modifier : "%d-%b-%Y"
+  end
 end

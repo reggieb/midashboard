@@ -5,6 +5,7 @@ one:
   title: My widget
   description: This is my widget
   x_field: happened_at
+  x_times: true
   y_field: score
   before_parameter: before
   after_parameter: after

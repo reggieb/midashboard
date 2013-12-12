@@ -33,6 +33,7 @@ class WidgetsControllerTest < ActionController::TestCase
   end
 
   def test_show
+    enable_mock @widget.root_uri, things.to_json
     get :show, id: @widget
     assert_response :success
   end

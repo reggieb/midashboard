@@ -33,11 +33,11 @@ class Widget < ActiveRecord::Base
   end
   
   def x_data
-    @x_data ||= raw.collect{|h| process_cell(h[x_field])}
+    @x_data ||= raw.collect{|h| process_cell(h[x_field], x_times?)}
   end
 
   def y_data
-    @y_data ||= raw.collect{|h| process_cell(h[y_field])}
+    @y_data ||= raw.collect{|h| process_cell(h[y_field], y_times?)}
   end
   
   def x_series
@@ -48,7 +48,18 @@ class Widget < ActiveRecord::Base
     @y_series ||= y_series_class.new(y_data)
   end
 
-  def process_cell(entry)
+  def process_cell(entry, times)
+    return parse_time(entry) if times
+    return entry.to_f if numeric?(entry)
+    entry
+  end
+  
+  def numeric?(entry)
+    return true if entry =~ /^\d+$/
+    true if Float(entry) rescue false
+  end
+  
+  def parse_time(entry)
     Time.parse(entry)
   rescue ArgumentError, TypeError
     entry
