@@ -6,8 +6,6 @@
     <th>Title</th>
     <th>Description</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @dashboards.each do |dashboard| %>
@@ -15,9 +13,11 @@
     <td><%= dashboard.name %></td>
     <td><%= dashboard.title %></td>
     <td><%= dashboard.description %></td>
-    <td><%= link_to 'Show', dashboard, class: 'btn btn-info' %></td>
-    <td><%= link_to 'Edit', edit_dashboard_path(dashboard), class: 'btn btn-warning' %></td>
-    <td><%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+    <td>
+      <%= link_to 'Show', dashboard, class: 'btn btn-info' %>
+      <%= link_to 'Edit', edit_dashboard_path(dashboard), class: 'btn btn-warning' %>
+      <%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </td>
   </tr>
 <% end %>
 </table>

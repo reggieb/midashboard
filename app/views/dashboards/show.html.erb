@@ -6,7 +6,6 @@
 </div>
 
 <div class="widgets">
-  <h2>Widgets:</h2>
   <% @dashboard.widgets.each do |widget| %>
     <div class="widget">
       <%= link_to widget_chart(widget), widget_path(widget) %>

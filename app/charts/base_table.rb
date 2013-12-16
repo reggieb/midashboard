@@ -5,6 +5,7 @@ class BaseTable
       table: self,
       scatter: ScatterGraph,
       line: LineGraph,
+      bar: BarGraph,
       guage: Gauge
     }
   end
