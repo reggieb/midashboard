@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131211150956) do
+ActiveRecord::Schema.define(:version => 20131216150104) do
 
   create_table "dashboard_widgets", :force => true do |t|
     t.integer  "dashboard_id"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20131211150956) do
     t.integer  "x_points"
     t.integer  "y_points"
     t.string   "chart_type"
+    t.string   "x_compact_method"
+    t.string   "y_compact_method"
   end
 
 end

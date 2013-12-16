@@ -14,29 +14,31 @@
     <%= f.input :name %>
     <%= f.input :title %>
     <%= f.input :root_uri %>
-    <%= f.input :data_type %>
+    <%#= f.input :data_type %>
     <%= f.input :chart_type, collection: BaseTable.chart_types.keys, prompt: 'Please select' %>
   </div>
   
    <div class="form_block"> 
     <%= f.input :before_parameter %>
     <%= f.input :after_parameter %>
-    <%= f.input :date_modifier %>
+    <%#= f.input :date_modifier %>
     <%= f.input :description, input_html: { rows: 3 } %>
    </div>
   
   <div class="form_block">  
     <%= f.input :y_field %>
-    <%= f.input :y_times %>
-    <%= f.input :y_points %>
     <%= f.input :y_label %>
+    <%= f.input :y_times %>
+    <%#= f.input :y_points %>
+    <%= f.input :y_compact_method, collection: Compactor.compaction_methods.invert %>
   </div>
 
   <div class="form_block">
     <%= f.input :x_field %>
-    <%= f.input :x_times %>
-    <%= f.input :x_points %>
     <%= f.input :x_label %>
+    <%= f.input :x_times %>
+    <%#= f.input :x_points %>
+    <%= f.input :x_compact_method, collection: Compactor.compaction_methods.invert %>
   </div>
 
   <div class="actions">

@@ -23,4 +23,15 @@ class Compactor < Array
     (1..length).select{|x| x % compact_factor == 0}
   end
 
+  def self.compaction_methods
+    {
+      first:   'First',
+      last:    'Last',
+      max:     'Maximum',
+      min:     'Minimum',
+      average: 'Average',
+      sum:     'Sum'
+    }
+  end
+
 end

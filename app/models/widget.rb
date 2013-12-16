@@ -1,9 +1,11 @@
 class Widget < ActiveRecord::Base
   attr_accessible :data_type, :description, :name, :root_uri, :title,
     :y_field, :y_label, :x_field, :x_label, :before_parameter, :after_parameter,
-    :date_modifier, :x_times, :y_times, :x_points, :y_points, :chart_type
+    :date_modifier, :x_times, :y_times, :x_points, :y_points, :chart_type,
+    :y_compact_method, :x_compact_method
   
   DEFAULT_POINTS = 6
+  DEFAULT_COMPACT_METHOD = 'first'
 
   has_many :dashboard_widgets
   has_many :dashboards, through: :dashboard_widgets
@@ -26,6 +28,14 @@ class Widget < ActiveRecord::Base
   
   def y_points
     alternative_to_blank super, DEFAULT_POINTS
+  end
+
+  def x_compact_method
+    alternative_to_blank super, DEFAULT_COMPACT_METHOD
+  end
+
+  def y_compact_method
+    alternative_to_blank super, DEFAULT_COMPACT_METHOD
   end
 
   def title
@@ -71,8 +81,8 @@ class Widget < ActiveRecord::Base
 
   private
   def build_data
-    x_data.compact_to! y_data
-    y_data.compact_to! x_data
+    x_data.compact_to! y_data, x_compact_method
+    y_data.compact_to! x_data, y_compact_method
     [x_data, y_data].transpose
   end
 
