@@ -8,7 +8,8 @@ module WidgetsHelper
   end
   
   def chart_instance(widget)
-    klass = BaseTable.chart_types[widget.chart_type.to_sym] || BaseTable
+    chart_type = widget.chart_type? ? widget.chart_type : 'default'
+    klass = BaseTable.chart_types[chart_type.to_sym] || BaseTable
     klass.new(widget)
   end
   

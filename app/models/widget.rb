@@ -33,11 +33,11 @@ class Widget < ActiveRecord::Base
   end
   
   def x_data
-    @x_data ||= raw.collect{|h| process_cell(h[x_field], x_times?)}
+    @x_data ||= get_data_for(x_field, x_times?)
   end
 
   def y_data
-    @y_data ||= raw.collect{|h| process_cell(h[y_field], y_times?)}
+    @y_data ||= get_data_for(y_field, y_times?)
   end
   
   def x_series
@@ -66,10 +66,16 @@ class Widget < ActiveRecord::Base
   end
   
   def data
-    [x_data, y_data].transpose
+    @data ||= build_data
   end
 
   private
+  def build_data
+    x_data.compact_to! y_data
+    y_data.compact_to! x_data
+    [x_data, y_data].transpose
+  end
+
   def humanize(text)
     text.blank? ? "" : text.humanize
   end
@@ -84,5 +90,13 @@ class Widget < ActiveRecord::Base
   
   def x_series_class
     x_times? ? TimeSeries : DataSeries
+  end
+
+  def walkable_hash
+    @walkable_hash ||= HashWalker.new(raw)
+  end
+
+  def get_data_for(field, is_time)
+    Compactor.new walkable_hash.array(field).collect{|d| process_cell(d, is_time)}
   end
 end
