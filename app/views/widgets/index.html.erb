@@ -7,8 +7,6 @@
     <th>Name</th>
     <th>Title</th>
     <th>Chart</th>
-    <th>Y</th>
-    <th>X</th>
     <th>Actions</th>
   </tr>
 
@@ -17,8 +15,6 @@
     <td><%= widget.name %></td>
     <td><%= widget.title %></td>
     <td><%= widget.chart_type %>
-    <td><%= widget.y_field %></td>
-    <td><%= widget.x_field %></td>
     <td>
       <%= link_to 'Show', widget, class: 'btn btn-info' %>
       <%= link_to 'Edit', edit_widget_path(widget), class: 'btn btn-warning' %>

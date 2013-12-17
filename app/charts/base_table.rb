@@ -2,11 +2,12 @@ class BaseTable
   
   def self.chart_types
     {
-      table: self,
+      grid: self,
       scatter: ScatterGraph,
       line: LineGraph,
       bar: BarGraph,
-      guage: Gauge
+      guage: Gauge,
+      table: SimpleTable
     }
   end
   

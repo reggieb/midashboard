@@ -3,7 +3,10 @@ module WidgetsHelper
   def widget_chart(widget)
     holder_id = "widget_chart_#{widget.name}"
     holder = content_tag 'div', "", id: holder_id
-    chart = render_chart chart_instance(widget).chart, holder_id
+    chart = chart_instance(widget).chart
+    if chart.respond_to? :to_js
+      chart = render_chart(chart , holder_id)
+    end
     [holder, chart].join("\n").html_safe
   end
   

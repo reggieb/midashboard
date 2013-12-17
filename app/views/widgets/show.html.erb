@@ -2,7 +2,7 @@
 
 <%= widget_chart(@widget) %>
 
-<%= widget_table(@widget) if @widget.chart_type? and @widget.chart_type != 'table' %>
+<%= widget_table(@widget) if @widget.chart_type? and @widget.chart_type != 'grid' %>
 
 <%= link_to 'Edit', edit_widget_path(@widget), class: 'btn btn-warning' %>
 
