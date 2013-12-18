@@ -28,3 +28,5 @@ gem "google_visualr", ">= 2.1" # Google charts ruby wrapper
 gem 'simple_form' # Simplifies form input syntax
 
 gem 'remote_partial' # Grabs styling includes
+
+gem 'devise'
