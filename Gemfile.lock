@@ -41,6 +41,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    dibber (0.3.1)
     erubis (2.7.0)
     execjs (2.0.2)
     google_visualr (2.2.0)
@@ -128,6 +129,7 @@ PLATFORMS
 
 DEPENDENCIES
   devise
+  dibber
   google_visualr (>= 2.1)
   indulgence
   jquery-rails

@@ -30,3 +30,5 @@ gem 'simple_form' # Simplifies form input syntax
 gem 'devise' # Access control
 
 gem 'indulgence' # Permissions gem
+
+gem 'dibber' # Tidies up seeds
