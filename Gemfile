@@ -32,3 +32,5 @@ gem 'devise' # Access control
 gem 'indulgence' # Permissions gem
 
 gem 'dibber' # Tidies up seeds
+
+gem 'quiet_assets', :group => :development

@@ -45,17 +45,43 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  def test_new
+    get :new
+    assert_response :success
+  end
+  
+  def test_create
+    p = 'password'
+    assert_difference 'User.count' do
+      post :create, user: {email: new_email, password: p, password_confirmation: p}
+      assert_response :redirect
+    end
+  end
 
-#
-#  def test_new
-#    get :new
-#    assert_response :success
-#  end
-#
-#  def test_index
-#    get :index
-#    assert_response :success
-#  end
+  def test_index
+    get :index
+    assert_response :success
+  end
+  
+  def test_edit
+    get :edit, id: @user
+    assert_response :success
+  end
+  
+  def test_update
+    put :update, id: @user, user: {email: new_email}
+    assert_response :redirect
+    assert_equal new_email, @user.reload.email
+  end
+  
+  def test_destroy
+    assert_difference 'User.count', -1 do
+      delete :destroy, id: @user.id
+      assert_response :redirect
+    end
+  end
+
+
 
   def actions_that_should_be_blocked
     {

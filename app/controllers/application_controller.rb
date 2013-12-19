@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   end
   
   def ensure_admin_access_only
-    authenticate_user!
     unless current_user.try(:admin?)
       flash[:alert] = "Access denied"
       redirect_to root_path
