@@ -36,7 +36,7 @@ class UsersControllerTest < ActionController::TestCase
   
   def test_user_access_to_other_show_page
     sign_in @user
-    get :show, id: @user
+    get :show, id: @admin
     assert_response :redirect
   end
   

@@ -47,6 +47,8 @@ GEM
     hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.9)
+    indulgence (0.0.6)
+      activerecord
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -134,6 +136,7 @@ PLATFORMS
 DEPENDENCIES
   devise
   google_visualr (>= 2.1)
+  indulgence
   jquery-rails
   mysql2
   nesty

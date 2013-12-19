@@ -29,4 +29,6 @@ gem 'simple_form' # Simplifies form input syntax
 
 gem 'remote_partial' # Grabs styling includes
 
-gem 'devise'
+gem 'devise' # Access control
+
+gem 'indulgence' # Permissions gem
