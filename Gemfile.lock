@@ -44,7 +44,6 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     google_visualr (2.2.0)
-    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.9)
     indulgence (0.0.6)
@@ -59,12 +58,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    mini_portile (0.5.2)
     multi_json (1.8.2)
     mysql2 (0.3.14)
     nesty (1.0.2)
-    nokogiri (1.6.0)
-      mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -93,9 +89,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
-    remote_partial (0.7.3)
-      hashie
-      nokogiri
     safe_yaml (0.9.7)
     sass (3.2.12)
     sass-rails (3.2.6)
@@ -141,7 +134,6 @@ DEPENDENCIES
   mysql2
   nesty
   rails (= 3.2.16)
-  remote_partial
   sass-rails (~> 3.2.3)
   simple_form
   therubyracer
