@@ -6,6 +6,10 @@ require 'rails/test_help'
 
 I18n.enforce_available_locales = false
 
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   #

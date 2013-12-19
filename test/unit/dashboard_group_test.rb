@@ -12,7 +12,7 @@ class DashboardGroupTest < ActiveSupport::TestCase
   end
   
   def test_join_to_user
-    user = users(:one)
+    user = users(:user)
     user.dashboards << @dashboard
     assert_equal [@dashboard], user.dashboards 
   end

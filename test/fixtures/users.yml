@@ -1,5 +1,5 @@
 
-one:
+user:
   email: one@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
   role: user

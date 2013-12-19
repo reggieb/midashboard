@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class DashboardsControllerTest < ActionController::TestCase
-  setup do
+  def setup
     @dashboard = dashboards(:one)
+    sign_in users(:user)
   end
 
   def test_index
@@ -29,6 +30,7 @@ class DashboardsControllerTest < ActionController::TestCase
   end
 
   def test_show
+    enable_mock @dashboard.widgets.first.root_uri, things.to_json
     get :show, id: @dashboard
     assert_response :success
   end

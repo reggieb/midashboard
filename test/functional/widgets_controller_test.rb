@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class WidgetsControllerTest < ActionController::TestCase
-  setup do
+  def setup
     @widget = widgets(:one)
+    sign_in users(:user)
   end
 
   def test_index
