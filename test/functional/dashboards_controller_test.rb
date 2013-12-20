@@ -3,17 +3,17 @@ require 'test_helper'
 class DashboardsControllerTest < ActionController::TestCase
   def setup
     @dashboard = dashboards(:one)
-    sign_in users(:user)
+    @user = users(:user)
+    sign_in @user
   end
 
   def test_index
     get :index
     assert_response :success
-    assert_not_nil assigns(:dashboards)
   end
   
   def test_index_links
-    get :index
+    test_index_dashboards_when_user_has_a_dashboard
     assert_no_tag :a, attributes: {href: new_dashboard_path}
     assert_tag :a, attributes: {href: dashboard_path(@dashboard)}
     assert_no_tag :a, attributes: {href: edit_dashboard_path(@dashboard)}
@@ -27,6 +27,24 @@ class DashboardsControllerTest < ActionController::TestCase
     assert_tag :a, attributes: {href: dashboard_path(@dashboard)}
     assert_tag :a, attributes: {href: edit_dashboard_path(@dashboard)}
     assert_tag :a, attributes: {href: dashboard_path(@dashboard), 'data-method' => 'delete'}
+  end
+  
+  def test_index_dashboards
+    get :index
+    assert_equal [], @user.all_dashboards
+    assert_equal @user.all_dashboards, assigns(:dashboards)
+  end
+  
+  def test_index_dashboards_when_user_has_a_dashboard
+    @user.dashboards << @dashboard
+    get :index
+    assert_equal @user.all_dashboards, assigns(:dashboards)
+  end
+  
+  def test_index_dashboards_for_admin
+    sign_in users(:admin)
+    get :index
+    assert_equal Dashboard.all, assigns(:dashboards)
   end
 
   def test_new

@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   before_filter :get_widgets, only: [:edit, :update, :create, :new]
 
   def index
-    @dashboards = Dashboard.all
+    @dashboards = Dashboard.indulgence(current_user, :read)
   end
 
   def show

@@ -13,10 +13,20 @@ class User < ActiveRecord::Base
   
   has_many :dashboard_groups, as: :groupable, uniq: true
   has_many :dashboards, through: :dashboard_groups
+  
+  has_many :group_dashboards, through: :user_groups, source: :dashboards
 
   acts_as_indulgent
   
   def admin?
     role and role.name == 'admin'
+  end
+  
+  def all_dashboards
+    dashboards | group_dashboards
+  end
+  
+  def all_dashboard_ids
+    all_dashboards.collect &:id
   end
 end

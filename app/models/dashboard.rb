@@ -7,4 +7,6 @@ class Dashboard < ActiveRecord::Base
   
   has_many :dashboard_groups, uniq: true
   
+  acts_as_indulgent
+  
 end
