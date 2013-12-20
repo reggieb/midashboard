@@ -10,6 +10,11 @@ class ApiClientTest < ActiveSupport::TestCase
     get_all
     assert_equal things.to_json, ApiClient.new(@uri).response.body
   end
+  
+  def test_response_with_uri
+    get_all
+    assert_equal things.to_json, ApiClient.new(URI(@uri)).response.body
+  end
 
   def test_raw
     get_all

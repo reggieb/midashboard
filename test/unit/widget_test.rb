@@ -39,5 +39,62 @@ class WidgetTest < ActiveSupport::TestCase
     @widget.title = ""
     assert_equal @widget.name.humanize, @widget.title
   end
+  
+  def test_uri
+    assert_equal URI(@widget.root_uri), @widget.uri
+  end
+  
+  def test_add_to_query
+    @widget.add_to_query(this: 'that', foo: 'bar')
+    assert_match /this=that&foo=bar/, @widget.uri.to_s
+  end
+  
+  def test_spit_query
+    @widget.uri.query = 'this=that%26foo%3dbar&something=else'
+    expect = [['this','that'],['foo','bar'],['something','else']]
+    assert_equal expect, @widget.split_query
+  end
+  
+  def test_before
+    time = Time.now
+    @widget.before(time)
+    assert_match "before=#{time.as_json}", @widget.uri.query
+  end
+  
+  def test_after
+    time = Time.now
+    @widget.after(time)
+    assert_match "after=#{time.as_json}", @widget.uri.query
+  end
+  
+  def test_before_with_before_parameter
+    time = Time.now
+    @widget.before_parameter = 'earlier_than'
+    @widget.before(time)
+    assert_match "earlier_than=#{time.as_json}", @widget.uri.query
+  end
+  
+  def test_after_with_after_parameter
+    time = Time.now
+    @widget.after_parameter = 'later_than'
+    @widget.after(time)
+    assert_match "later_than=#{time.as_json}", @widget.uri.query
+  end
+  
+  def test_before_with_date_modifier
+    time = Time.now
+    mod = '%d-%b-%Y'
+    @widget.date_modifier = mod
+    @widget.before(time)
+    assert_match "before=#{time.strftime(mod)}", @widget.uri.query
+  end
+  
+  def test_after_with_date_modifier
+    time = Time.now
+    mod = '%d-%b-%Y'
+    @widget.date_modifier = mod
+    @widget.after(time)
+    assert_match "after=#{time.strftime(mod)}", @widget.uri.query
+  end
 
 end

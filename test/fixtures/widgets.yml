@@ -7,6 +7,3 @@ one:
   x_field: happened_at
   x_times: true
   y_field: score
-  before_parameter: before
-  after_parameter: after
-  date_modifier: '%d-%b-%Y'
