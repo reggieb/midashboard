@@ -11,6 +11,23 @@ class DashboardsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:dashboards)
   end
+  
+  def test_index_links
+    get :index
+    assert_no_tag :a, attributes: {href: new_dashboard_path}
+    assert_tag :a, attributes: {href: dashboard_path(@dashboard)}
+    assert_no_tag :a, attributes: {href: edit_dashboard_path(@dashboard)}
+    assert_no_tag :a, attributes: {href: dashboard_path(@dashboard), 'data-method' => 'delete'}    
+  end
+  
+  def test_index_links_for_admin
+    sign_in users(:admin)
+    get :index
+    assert_tag :a, attributes: {href: new_dashboard_path}
+    assert_tag :a, attributes: {href: dashboard_path(@dashboard)}
+    assert_tag :a, attributes: {href: edit_dashboard_path(@dashboard)}
+    assert_tag :a, attributes: {href: dashboard_path(@dashboard), 'data-method' => 'delete'}
+  end
 
   def test_new
     get :new

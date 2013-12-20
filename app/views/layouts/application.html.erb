@@ -10,15 +10,11 @@
 <body>
  
   <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= content_tag('p', login_link, class: 'login') unless current_page?(new_user_session_path) %>
+    <%= content_tag('p', notice, class: 'notice') if notice %>
+    <%= content_tag('p', alert, class: 'alert') if alert %>
 
-    <div class="nav">
-      <ul class="inline">
-        <li><%= link_to_unless_current 'Dashboards', dashboards_path %></li>
-        <li><%= link_to_unless_current 'Widgets', widgets_path %></li>
-      </ul>
-    </div>
+    <%= render 'admin_nav' if current_user.try('admin?') %>
 
     <%= yield %>
     
