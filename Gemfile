@@ -33,4 +33,6 @@ gem 'indulgence' # Permissions gem
 
 gem 'dibber' # Tidies up seeds
 
+# Tidy up log web service output
 gem 'quiet_assets', :group => :development
+gem 'webrick', "1.3.1" # This version generates quieter logs

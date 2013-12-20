@@ -30,7 +30,7 @@
             widget, 
             method: :delete, 
             data: { confirm: 'Are you sure?' } 
-          ) if @widget.indulge?(current_user, :delete)
+          ) if widget.indulge?(current_user, :delete)
       %>
     </td>
   </tr>
