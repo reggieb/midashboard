@@ -10,6 +10,8 @@ class Widget < ActiveRecord::Base
   has_many :dashboard_widgets
   has_many :dashboards, through: :dashboard_widgets
   
+  acts_as_indulgent
+  
   validates :name, presence: true, uniqueness: true
 
   def raw

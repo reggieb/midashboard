@@ -4,7 +4,10 @@
 
 <%= widget_table(@widget) if @widget.chart_type? and @widget.chart_type != 'grid' %>
 
-<%= link_to 'Edit', edit_widget_path(@widget) %>
+<%= link_to(
+      'Edit', edit_widget_path(@widget)
+    ) if @widget.indulge?(current_user, :update)
+%>
 
 
 

@@ -13,4 +13,7 @@
   <% end %>
 </div>
 
-<%= link_to 'Edit', edit_dashboard_path(@dashboard) %>
+<%= link_to(
+      'Edit', edit_dashboard_path(@dashboard)
+    ) if @dashboard.indulge?(current_user, :update) 
+%>

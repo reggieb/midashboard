@@ -1,6 +1,11 @@
 <h1>Listing widgets</h1>
 
-<p><%= link_to 'New Widget', new_widget_path %></p>
+<%= 
+  content_tag(
+    'p',
+    link_to('New Widget', new_widget_path)
+  ) if Widget.new.indulge?(current_user, :create)
+%>
 
 <table class="table">
   <tr>
@@ -17,8 +22,16 @@
     <td><%= widget.chart_type %>
     <td>
       <%= link_to 'Show', widget %>
-      <%= link_to 'Edit', edit_widget_path(widget) %>
-      <%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to(
+            'Edit', edit_widget_path(widget)
+          ) if widget.indulge?(current_user, :update) %>
+      <%= link_to(
+            'Destroy', 
+            widget, 
+            method: :delete, 
+            data: { confirm: 'Are you sure?' } 
+          ) if @widget.indulge?(current_user, :delete)
+      %>
     </td>
   </tr>
 <% end %>
