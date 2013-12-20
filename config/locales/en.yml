@@ -5,7 +5,7 @@ en:
   simple_form:
     labels:
       widget:
-        name: Name (identifies widget within dashbaord)
+        name: Name (identifies widget within dashboard)
         title: Title (displayed label for widget)
         root_uri: Root uri (root to data source api)
         data_type: Data type

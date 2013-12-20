@@ -9,4 +9,6 @@ class Dashboard < ActiveRecord::Base
   
   acts_as_indulgent
   
+  validates :name, presence: true, uniqueness: true
+  
 end

@@ -10,7 +10,7 @@
 <body>
  
   <div class="container">
-    <%= content_tag('p', login_link, class: 'login') unless current_page?(new_user_session_path) %>
+    <%= content_tag('div', login_link, class: 'login') unless current_page?(new_user_session_path) %>
     <%= content_tag('p', notice, class: 'notice') if notice %>
     <%= content_tag('p', alert, class: 'alert') if alert %>
 
