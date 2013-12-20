@@ -1,5 +1,7 @@
 <h1>Dashboards</h1>
-<%= content_tag('p', link_to('New Dashboard', new_dashboard_path)) if current_user.admin? %>
+<%= content_tag(
+      'p', link_to('New Dashboard', new_dashboard_path)
+    ) if Dashboard.new.indulge?(current_user, :create) %>
 
 <table>
   <tr>
@@ -16,13 +18,15 @@
     <td><%= dashboard.description %></td>
     <td>
       <%= link_to 'Show', dashboard %>
-      <%= link_to('Edit', edit_dashboard_path(dashboard)) if current_user.admin? %>
+      <%= link_to(
+            'Edit', edit_dashboard_path(dashboard)
+          ) if dashboard.indulge?(current_user, :update) %>
       <%= link_to(
             'Destroy', 
             dashboard, 
             method: :delete, 
             data: { confirm: 'Are you sure?' }
-          ) if current_user.admin?
+          ) if dashboard.indulge?(current_user, :delete)
       %>
     </td>
   </tr>
