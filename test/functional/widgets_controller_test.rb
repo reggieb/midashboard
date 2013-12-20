@@ -22,7 +22,7 @@ class WidgetsControllerTest < ActionController::TestCase
       post :create, widget: {
         data_type: @widget.data_type,
         description: @widget.description,
-        name: @widget.name,
+        name: 'new_name',
         root_uri: @widget.root_uri,
         title: @widget.title,
         x_field: @widget.x_field,

@@ -56,7 +56,7 @@ class DashboardsControllerTest < ActionController::TestCase
     assert_difference('Dashboard.count') do
       post :create, dashboard: { 
         description: @dashboard.description,
-        name: @dashboard.name,
+        name: 'new_name',
         title: @dashboard.title
       }
     end
