@@ -1,0 +1,15 @@
+<%= form_tag '', method: 'get', class: 'filter' do |f| %>
+
+  <div class="input string optional">
+    <%= label_tag 'after' %>
+    <%= text_field_tag 'after', params[:after], class: 'datepicker' %>
+  </div>
+
+  <div class="input string optional">
+    <%= label_tag 'before' %>
+    <%= text_field_tag 'before', params[:before], class: 'datepicker' %>
+  </div>
+
+  <%= submit_tag 'filter', class: 'input' %>
+
+<% end %>

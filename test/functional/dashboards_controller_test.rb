@@ -70,6 +70,22 @@ class DashboardsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_show_with_filter
+    thing = things.last
+    happened_at = Time.parse(thing[:happened_at])
+    day_month_year = "%d-%b-%Y"
+    before = (happened_at - 1.day).strftime(day_month_year)
+    after = (happened_at + 1.day).strftime(day_month_year)
+    uri = @dashboard.widgets.first.root_uri + "?before=#{before}&after=#{after}"
+    enable_mock uri, [thing].to_json
+    get :show, id: @dashboard, before: before, after: after
+    assert_response :success
+    assigns('dashboard').widgets.each do |widget|
+      assert_match /before=#{before}/, widget.uri.query
+      assert_match /after=#{after}/, widget.uri.query
+    end
+  end
+
   def test_get
     get :edit, id: @dashboard
     assert_response :success

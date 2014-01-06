@@ -8,7 +8,10 @@ class DashboardsController < ApplicationController
   end
 
   def show
-
+    @dashboard.widgets.each do |widget|
+      widget.before(params[:before]) if params[:before]
+      widget.after(params[:after]) if params[:after]
+    end
   end
 
   def new
