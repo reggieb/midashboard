@@ -18,16 +18,16 @@ The Met Office provides weather forecast data via an api at this uri:
 The following widget will gather wind speed data using that uri, and display the
 data as a line chart:
 
-Widget.create(
-  name:             'wind_speed'
-  root_url:         uri,
-  y_label:          'Wind Speed',
-  y_field:          'SiteRep/DV/Location/Period/Rep/S'
-  y_compact_method: 'average'
-  x_label:          'Day',
-  x_field:          'SiteRep/DV/Location/Period/value'
-  chart_type:       'line'
-)
+    Widget.create(
+      name:             'wind_speed'
+      root_url:         uri,
+      y_label:          'Wind Speed',
+      y_field:          'SiteRep/DV/Location/Period/Rep/S'
+      y_compact_method: 'average'
+      x_label:          'Day',
+      x_field:          'SiteRep/DV/Location/Period/value'
+      chart_type:       'line'
+    )
 
 == A Dashboard
 
